@@ -4,15 +4,15 @@
         "id": "1",
         "nombre": "Juan",
         "apellido": "Perez",
-        "matriculado": true,
-        "email": "juan@gmail.com"
+        "estadoMatricula": true,
+        "correo": "juan@gmail.com"
       },
       {
           "id": "2",
           "nombre": "Angie",
           "apellido": "Lopez",
-          "matriculado": true,
-          "email": "angie@gmail.com"
+          "estadoMatricula": false,
+          "correo": "angie@gmail.com"
         }
     ]
   }
