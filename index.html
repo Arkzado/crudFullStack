@@ -7,6 +7,7 @@
     <link href="frontend/assets/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <script defer src="frontend/assets/js/app.js"></script>
     <script defer src="frontend/assets/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script defer src="frontend/assets/js/sweetalert.js"></script>
 </head>
 <body>
     <table id="tabla" class="table">
@@ -28,5 +29,62 @@
           
         </tbody>
     </table>
+    <div class="modal fade" id="modalEditar" >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5">Editar Aprendiz</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                      <label class="form-label" >Nombre</label>
+                      <input type="text" class="form-control" id="nombre">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellido">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Correo</label>
+                        <input type="text" class="form-control" id="correo">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">¿Está Matriculado?</label>
+                        <select class="form-select" id="matricula">
+                            <option disabled selected>Seleccionar Matricula</option>
+                            <option value="Si">Sí</option>
+                            <option value="No">No</option>
+                          </select>
+                    </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger">Cancelar</button>
+              <button class="btn btn-primary" id="btnModalEditar" data-bs-target="#confirmar" data-bs-toggle="modal">Editar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="confirmar" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="confirmar">Modal 2</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              Hide this modal and show the first with the button below.
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" data-bs-target="#modalEditar" data-bs-toggle="modal">Back to first</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
 </html>

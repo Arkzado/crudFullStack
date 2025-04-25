@@ -1,19 +1,18 @@
 {
-    "aprendices": [
-      {
-        "id": "1",
-        "nombre": "Juan",
-        "apellido": "Perez",
-        "estadoMatricula": true,
-        "correo": "juan@gmail.com"
-      },
-      {
-          "id": "2",
-          "nombre": "Angie",
-          "apellido": "Lopez",
-          "estadoMatricula": false,
-          "correo": "angie@gmail.com"
-        }
-    ]
-  }
-  
+  "aprendices": [
+    {
+      "id": "1",
+      "nombre": "Juan",
+      "apellido": "Perez",
+      "estadoMatricula": true,
+      "correo": "juan@gmail.com"
+    },
+    {
+      "id": "2",
+      "nombre": "Angie",
+      "apellido": "Lopez",
+      "estadoMatricula": false,
+      "correo": "angie@gmail.com"
+    }
+  ]
+}
