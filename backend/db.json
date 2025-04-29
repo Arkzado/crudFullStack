@@ -2,17 +2,17 @@
   "aprendices": [
     {
       "id": "1",
-      "nombre": "Juan",
-      "apellido": "Perez",
-      "estadoMatricula": true,
-      "correo": "juan@gmail.com"
+      "nombre": "Jhonny",
+      "apellido": "Díaz",
+      "correo": "jhonny@gmail.com",
+      "estadoMatricula": false
     },
     {
       "id": "2",
-      "nombre": "Angie",
-      "apellido": "Lopez",
-      "estadoMatricula": false,
-      "correo": "angie@gmail.com"
+      "nombre": "Andrés",
+      "apellido": "Osorio",
+      "correo": "andres@gmail.com",
+      "estadoMatricula": true
     }
   ]
 }
