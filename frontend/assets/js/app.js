@@ -22,8 +22,9 @@ botonEditarModal.addEventListener("click", () => {
     }
 });
 
-btnEdicionConfirmada.addEventListener("click", () =>{
-    editarAprendiz();
+btnEdicionConfirmada.addEventListener("click", async() =>{
+    let respuesta = await editarAprendiz();
+    alertaEdicion(respuesta);
 });
 
 async function leerApi() {
@@ -145,7 +146,8 @@ async function editarAprendiz(){
       estadoMatricula: datosAprendiz[4]
     };
 
-    fetch(`http://localhost:3000/aprendices/${datosAprendiz[0]}`, {
+    let respuesta = 
+    await fetch(`http://localhost:3000/aprendices/${datosAprendiz[0]}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -153,11 +155,33 @@ async function editarAprendiz(){
         body: JSON.stringify(aprendiz)
     });
 
-    Swal.fire({
-        title: "Datos Editados Con Exito",
-        text: "Los datos del aprendiz se han actualizado satisfactoriamente",
-        icon: "success"
-      });
+    if(respuesta.ok){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function alertaEdicion(respuesta) {
+    if (respuesta){
+        Swal.fire({
+            title: "Datos Editados Con Exito",
+            text: "Los datos del aprendiz se han actualizado satisfactoriamente",
+            icon: "success"
+          })
+          .then(() =>{
+            location.reload();
+          });
+    }
+    else{
+        Swal.fire({
+            icon: "error",
+            title: "Ha ocurrido un error",
+            text: "No se pudo editar al aprendiz",
+          });
+    }
+    
 }
 
 function eliminarAprendiz(boton) {
