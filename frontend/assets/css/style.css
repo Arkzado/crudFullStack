@@ -76,3 +76,43 @@ tbody {
     border-radius: 0 0 1rem 1rem;
 }
 
+/* Agregar estos estilos al archivo style.css existente */
+
+.vista-content {
+    transition: all 0.3s ease;
+}
+
+#vistaFormulario .card {
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+#vistaFormulario .card-header {
+    background-color: #28a745;
+}
+
+#btnVolverATabla {
+    transition: all 0.2s ease;
+}
+
+#btnVolverATabla:hover {
+    background-color: #fd9c00;
+    transform: translateX(-3px);
+}
+
+#formAgregarAprendiz .form-control:focus, 
+#formAgregarAprendiz .form-select:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+@media (max-width: 768px) {
+    #vistaFormulario .card-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    #btnVolverATabla {
+        align-self: flex-start;
+    }
+}

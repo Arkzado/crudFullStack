@@ -3,6 +3,8 @@ const URLAPI = 'http://localhost:3000/aprendices';
 let cuerpoTabla = document.querySelector("#cuerpoTabla");
 let botonEditarModal = document.querySelector("#btnModalEditar");
 let btnEdicionConfirmada = document.querySelector("#btnEdicionConfirmada");
+let btnAgregar = document.getElementById('btnAgregar');
+let btnActivar = document.querySelector('#activar');
 let aprendizEditadoGlobal = null;
 
 function toggleSidebar() {
@@ -283,6 +285,132 @@ async function traerTodo() {
         cuerpoTabla.appendChild(trCuerpo);
     });
 }
+// Agregar este código al final de app.js, sin modificar lo existente
 
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Agregamos eventos para el cambio de vistas
+    setupVistaCambio();
+    
+    setupFormularioAgregar();
+  });
+  
+  function setupVistaCambio() {
+    // Botón en sidebar para mostrar formulario
+    const btnMostrarFormulario = document.getElementById('btnMostrarFormulario');
+    if (btnMostrarFormulario) {
+      btnMostrarFormulario.addEventListener('click', function() {
+        mostrarVistaFormulario();
+        
+        // Si el sidebar está abierto, cerrarlo al cambiar vista
+        const sidebar = document.getElementById('sidebar');
+        if (!sidebar.classList.contains('collapsed')) {
+          toggleSidebar();
+        }
+      });
+    }
+    
+    // Botón "+" para mostrar formulario
+    
+    if (btnAgregar) {
+      btnAgregar.addEventListener('click', function() {
+        mostrarVistaFormulario();
+        
+        // Si el sidebar está abierto, cerrarlo al cambiar vista
+        const sidebar = document.getElementById('sidebar');
+        if (!sidebar.classList.contains('collapsed')) {
+          toggleSidebar();
 
+        }
+      });
+    }
+    
+    // Botón para volver a la tabla
+    const btnVolverATabla = document.getElementById('btnVolverATabla');
+    if (btnVolverATabla) {
+      btnVolverATabla.addEventListener('click', function() {
+        mostrarVistaTabla();
+      });
+    }
+  }
+  
+  function mostrarVistaFormulario() {
+    document.getElementById('vistaTabla').style.display = 'none';
+    document.getElementById('vistaFormulario').style.display = 'block';
+    btnActivar.style.display = 'none';
 
+  }
+  
+  function mostrarVistaTabla() {
+    document.getElementById('vistaFormulario').style.display = 'none';
+    document.getElementById('vistaTabla').style.display = 'block';
+    btnActivar.style.display = 'block';
+  }
+  
+  async function setupFormularioAgregar() {
+    const formAgregarAprendiz = document.getElementById('formAgregarAprendiz');
+    if (formAgregarAprendiz) {
+      formAgregarAprendiz.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        let datos = await leerApi();
+
+        let idAprendiz = datos.length + 1;
+        let nombre = document.getElementById('nombreAgregar').value;
+        let apellido = document.getElementById('apellidoAgregar').value;
+        let correo = document.getElementById('correoAgregar').value;
+        let matricula = document.getElementById('matriculaAgregar').value;
+        
+        if (nombre.trim() === '' || apellido.trim() === '' || correo.trim() === '') {
+          Swal.fire({
+            icon: "error",
+            title: "Campos Incompletos",
+            text: "Por favor complete todos los campos"
+          });
+          return;
+        }
+        
+        const nuevoAprendiz = {
+          id: idAprendiz,
+          nombre: nombre,
+          apellido: apellido,
+          correo: correo,
+          estadoMatricula: matricula === "Si" ? true : false
+        };
+        
+        const respuesta = await agregarAprendiz(nuevoAprendiz);
+        if (respuesta) {
+          Swal.fire({
+            title: "Aprendiz Agregado Con Éxito",
+            text: "Los datos del aprendiz se han guardado satisfactoriamente",
+            icon: "success"
+          }).then(() => {
+            location.reload();
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Ha ocurrido un error",
+            text: "No se pudo agregar al aprendiz"
+          });
+        }
+      });
+    }
+  }
+  
+  async function agregarAprendiz(aprendiz) {
+    try {
+      let respuesta = await fetch(URLAPI, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(aprendiz)
+      });
+      
+      return respuesta.ok;
+    } catch (error) {
+      console.error("Error al agregar aprendiz:", error);
+      return false;
+    }
+  }

@@ -13,6 +13,13 @@
       "apellido": "Osorio",
       "correo": "andres@gmail.com",
       "estadoMatricula": false
+    },
+    {
+      "id": 3,
+      "nombre": "Juan",
+      "apellido": "Perez",
+      "correo": "juanperez@gmail.ocm",
+      "estadoMatricula": true
     }
   ]
 }
