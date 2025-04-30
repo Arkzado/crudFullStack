@@ -12,10 +12,10 @@
       "nombre": "Andrés",
       "apellido": "Osorio",
       "correo": "andres@gmail.com",
-      "estadoMatricula": false
+      "estadoMatricula": true
     },
     {
-      "id": 3,
+      "id": "3",
       "nombre": "Juan",
       "apellido": "Perez",
       "correo": "juanperez@gmail.ocm",

@@ -355,7 +355,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let datos = await leerApi();
 
-        let idAprendiz = datos.length + 1;
+        let idAprendiz = `${datos.length + 1}`;
         let nombre = document.getElementById('nombreAgregar').value;
         let apellido = document.getElementById('apellidoAgregar').value;
         let correo = document.getElementById('correoAgregar').value;
