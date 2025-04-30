@@ -5,6 +5,13 @@ let botonEditarModal = document.querySelector("#btnModalEditar");
 let btnEdicionConfirmada = document.querySelector("#btnEdicionConfirmada");
 let aprendizEditadoGlobal = null;
 
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.querySelector('.toggle-btn');
+    sidebar.classList.toggle('collapsed');
+    toggleBtn.classList.toggle('collapsed');
+}
+
 //#####################################   Editar Aprendiz #########################################
 botonEditarModal.addEventListener("click", () => {
     let nombre = document.querySelector("#nombre").value;
@@ -276,4 +283,6 @@ async function traerTodo() {
         cuerpoTabla.appendChild(trCuerpo);
     });
 }
+
+
 
