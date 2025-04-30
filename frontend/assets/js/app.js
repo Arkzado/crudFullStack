@@ -5,6 +5,7 @@ let botonEditarModal = document.querySelector("#btnModalEditar");
 let btnEdicionConfirmada = document.querySelector("#btnEdicionConfirmada");
 let aprendizEditadoGlobal = null;
 
+//#####################################   Editar Aprendiz #########################################
 botonEditarModal.addEventListener("click", () => {
     let nombre = document.querySelector("#nombre").value;
     let apellido = document.querySelector("#apellido").value;
@@ -147,7 +148,7 @@ async function editarAprendiz(){
     };
 
     let respuesta = 
-    await fetch(`http://localhost:3000/aprendices/${datosAprendiz[0]}`, {
+    await fetch(`${URLAPI}/${datosAprendiz[0]}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -184,8 +185,44 @@ function alertaEdicion(respuesta) {
     
 }
 
-function eliminarAprendiz(boton) {
+//#####################################     Fin Editar Aprendiz #########################################
 
+//#####################################   Eliminar Aprendiz #########################################
+
+async function eliminarAprendiz(boton) {
+    let idAprendiz = boton.getAttribute('data-id');
+    let respuesta = 
+    await fetch(`${URLAPI}/${idAprendiz}`, {
+        method: 'DELETE'
+    });
+
+    if(respuesta.ok){
+        alertaEliminacion(true);
+    }
+    else{
+        alertaEliminacion(false)
+    }
+}
+
+function alertaEliminacion(respuesta) {
+    if (respuesta){
+        Swal.fire({
+            title: "Aprendiz Eliminado Con Exito",
+            text: "Se han eliminado los datos del aprendiz satisfactoriamente",
+            icon: "success"
+          })
+          .then(() =>{
+            location.reload();
+          });
+    }
+    else{
+        Swal.fire({
+            icon: "error",
+            title: "Ha ocurrido un error",
+            text: "No se pudo eliminar al aprendiz",
+          });
+    }
+    
 }
 async function traerTodo() {
     let datos = await leerApi();

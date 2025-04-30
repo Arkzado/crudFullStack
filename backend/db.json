@@ -5,14 +5,14 @@
       "nombre": "Jhonny",
       "apellido": "Díaz",
       "correo": "jhonny@gmail.com",
-      "estadoMatricula": false
+      "estadoMatricula": true
     },
     {
       "id": "2",
       "nombre": "Andrés",
       "apellido": "Osorio",
       "correo": "andres@gmail.com",
-      "estadoMatricula": true
+      "estadoMatricula": false
     }
   ]
 }
